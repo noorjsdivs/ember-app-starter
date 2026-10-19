@@ -31,8 +31,8 @@ folder, or keep this repo open to compare.
 - **Node 22 or newer.** Check with `node -v`.
 - **Git**
 - **VS Code** with the **Expo Tools** extension. VS Code suggests it when you open the folder.
-- **Expo Go for SDK 57.** Expo CLI installs the matching version on the simulator or emulator for you (see
-  [Troubleshooting](#troubleshooting)).
+- **Expo Go for SDK 57**, on the iPhone simulator or the Android emulator. The App Store's Expo Go can't open
+  this project; [Troubleshooting](#troubleshooting) has what works on a real phone.
 
 ## Quick start
 
@@ -146,10 +146,17 @@ builds the type scale on them.
 ## Troubleshooting
 
 **“Project is incompatible with this version of Expo Go”**
-The Expo Go in the App Store and Google Play always follows the newest SDK, and this project uses SDK 57. Run it on
-the iPhone simulator or the Android emulator instead: when you press <kbd>i</kbd> or <kbd>a</kbd>, Expo CLI offers to
-install the Expo Go that matches the project. To run it on your own phone, make a development build
-(`npx expo run:ios` or `npx expo run:android`).
+Each Expo Go build runs exactly one SDK, and this project uses SDK 57. Expo's own
+[troubleshooting page](https://docs.expo.dev/troubleshooting/expo-go-version-mismatch/) says the App Store's Expo Go
+stops at SDK 54, so the iPhone app from the store can't open this project. What works:
+
+- **iPhone simulator or Android emulator** (easiest): Expo CLI installs Expo Go when you press <kbd>i</kbd> or
+  <kbd>a</kbd>. If it installed the wrong one, pick SDK 57 at [expo.dev/go](https://expo.dev/go) and install that
+  build.
+- **Android phone:** install the SDK 57 build from [expo.dev/go](https://expo.dev/go). Google Play's version can be
+  ahead of or behind the project.
+- **iPhone:** build your own Expo Go with `eas go` and install it through TestFlight (this needs an Apple Developer
+  Program membership), or make a development build with `npx expo run:ios`.
 
 **The screen is blank, or you see an old version of it**
 Restart Metro with a clean cache:
