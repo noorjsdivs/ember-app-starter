@@ -1,0 +1,11 @@
+{
+  "name": "ember-kitchen",
+  "private": true,
+  "workspaces": ["shared", "server", "mobile"],
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "dev:mobile": "npm run start -w mobile",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present"
+  }
+}
